@@ -22,6 +22,10 @@ class CompanyListingsViewModel @Inject constructor(
 
     private var searchJob: Job? = null
 
+    init {
+        getCompanyListings()
+    }
+
     fun onEvent(event: CompanyListingsEvent) {
         when (event) {
             is CompanyListingsEvent.Refresh -> {
@@ -53,7 +57,7 @@ class CompanyListingsViewModel @Inject constructor(
                         }
                     }
                     is Resource.Error -> Unit
-                    is Resource.Loading  -> {
+                    is Resource.Loading -> {
                         state = state.copy(isLoading = true)
                     }
                 }
