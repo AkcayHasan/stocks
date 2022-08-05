@@ -29,7 +29,7 @@ class StockRepositoryImpl @Inject constructor(
         query: String
     ): Flow<Resource<List<CompanyListing>>> {
         return flow {
-            emit(Resource.Loading(isLoading = false))
+            emit(Resource.Loading(isLoading = true))
             val localListings = dao.searchCompanyListing(query)
             emit(Resource.Success(localListings.map {
                 it.toCompanyListing()
